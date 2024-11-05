@@ -3,3 +3,5 @@ alt-profanity-check
 guardrails-ai
 python-dotenv
 streamlit
+presidio-analyzer
+presidio-anonymizer
