@@ -30,7 +30,7 @@ One popular LLM guardrail framework has been provided by Guardrails AI that focu
 
 ### Data Processes Description
 The points below capture the key focuses of this project. Since the focus is on implementing and benchmarking LLM guardrails, little data will be used throughout the project, unless for occasional speed tests to document the latency of different guardrail frameworks at performing data-intensive techniques, such as Retrieval-Augmented Generation.
-1. **Multimodal Data Connectivity** - Automating the process of gathering, cleaning, and transforming raw data from various sources by mimicking a real-world enterprise scenario to address the problem invovling scattered information sources.
+1. **Multimodal Data Connectivity** - Automating the process of gathering, cleaning, and transforming raw data from various sources by mimicking a real-world enterprise scenario to address the problem involving scattered information sources.
 2. **Robust Prompt Monitoring** - Deploying robust, fault rolerant, and mindful input and output prompt-checking techniques (guardrails) to ensure harmful, sensitive, and riskful information are not leaked to malicious actors, nor communicated to the users, not allowed as inputs to the model.  
 3. **Ethical User Considerations** - Actively plan and orchestrate scenarios of attack to improve the future applicability and effectiveness of LLM guardrails in enterprise applications. High attentiveness will be given to define and design user flows, allowing the guardrail frameworks to address a wide-ranging scope of situations users may face interacting with LLM-based chatbots. 
 
