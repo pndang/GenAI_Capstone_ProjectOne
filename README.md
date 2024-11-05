@@ -2,10 +2,10 @@
 
 **Result-replication instructions**:
 
-1. Clone this repository to local development environment
-2. Navigate to the working directory and install the dependencies in **requirements.txt**
-3. Once done, run the command **streamlit run app.py** to locally serve and use the streamlit app LLM translator
-4. Other project works can be found in the **.ipynb** files (Jupyter notebooks), which are more "relaxed" regarding dependencies, simply run the notebooks (with **!pip install** commands) to reproduce the notebooks' results.
+1. Clone this repository to local development environment.
+2. Navigate to the working directory and install the dependencies in **[requirements.txt]**.
+3. Once done, run the command **[streamlit run app.py]** to locally serve and use the streamlit app LLM translator.
+4. Other project works can be found in the **[.ipynb]** files (Jupyter notebooks), which are more "relaxed" regarding dependencies, simply run the notebooks (with **[!pip install]** commands) to reproduce the notebooks' results.
 5. Enjoy being a Guardian of the Generative Realm!
 
 <em>**Author: Phu Dang**</em>
