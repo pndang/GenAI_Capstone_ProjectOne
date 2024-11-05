@@ -1,6 +1,6 @@
 # Data Science Capstone Project Report
 
-Author: Phu Dang
+<italic>**Author: Phu Dang**</italic>
 
 Capstone Team: Deloitte X HDSI, UC San Diego
 
