@@ -1,6 +1,6 @@
 # Data Science Capstone Project Report
 
-Result-replication instructions:
+**Result-replication instructions**:
 
 1. Clone this repository to local development environment
 2. Navigate to the working directory and install the dependencies in **requirements.txt**
