@@ -1,7 +1,9 @@
-openai==0.28
+openai
+llm_guard
 alt-profanity-check
 guardrails-ai
 python-dotenv
 streamlit
 presidio-analyzer
 presidio-anonymizer
+ipykernel
