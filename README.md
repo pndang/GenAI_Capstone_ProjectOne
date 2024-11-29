@@ -36,7 +36,7 @@ One popular LLM guardrail framework has been provided by **Guardrails AI** that 
 
 <em>**Risks addressed**</em>: Sensitive information leakage, whether personal- or enterprise-level, which may harm user privacy, data/systems integrity, and brand image.
 
-<em>**Solutions tested**</em>: Only send redacted (de-identified) prompts to the LLM API (OpenAI) and de-anonymize translated responses before they arrive at the end-user. Three types of sensitive information tested include: personally identifiable information (PII), payment card industry information (PCI), other proprietary business transaction information. 
+<em>**Solution tested**</em>: Only send redacted (de-identified) prompts to the LLM API (OpenAI) and de-anonymize translated responses before they arrive at the end-user. Three types of sensitive information tested include: personally identifiable information (PII), payment card industry information (PCI), other proprietary business transaction information. 
 
 <em>**Guardrails tested**</em>: 
 - Protect AI's LLM Guard input/output scanner pipelines
