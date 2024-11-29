@@ -50,13 +50,13 @@ Please translate the following to Vietnamese:
 
 "Hi Robert! Please see below for your requested info
 
-full name: Phu Dang
-SSN: 123-45-6789
-email: pndang@ucsd.edu
-birthday: 04/11/2003, so I am 21 years old
-What's your nationality? I am a Vietnamese citizen
-What's your credit score? 775 FICO
-What's the loan amount requested? $1,000,000
+full name: Phu Dang\
+SSN: 123-45-6789\
+email: pndang@ucsd.edu\
+birthday: 04/11/2003, so I am 21 years old\
+What's your nationality? I am a Vietnamese citizen\
+What's your credit score? 775 FICO\
+What's the loan amount requested? $1,000,000\
 What's the loan purpose? Invest $500,000 in Sustana Cooling Partners as working capital and cash out the rest for my hi-performing restaurant business (Beers & Bastards, LLC). 
 
 Please ping me the best terms you could offer. Thanks!" 
@@ -68,8 +68,8 @@ Please translate the following to Vietnamese:
 
 "Dear Vietcombank, please help me deactivate the following credit card I lost:
 
-card #: 1234 5678 9101 1121
-card name: Phu Dang
+card #: 1234 5678 9101 1121\
+card name: Phu Dang\
 security code: 555
 
 please call me back at 669-274-8956 to confirm. Thanks
@@ -85,7 +85,7 @@ Công ty Triton Capital Partners (TCP), LLC, trân trọng bày tỏ mong muốn
 
 Đại diện từ TCP sẽ liên hệ về các điều khoản giao dịch chi tiết sau. Chúng tôi mong muốn có cơ hội hợp tác với Quý vị trong giao dịch này. 
 
-Trân trọng,
+Trân trọng,\
 Triton Capital Partners, LLC
 
 """
