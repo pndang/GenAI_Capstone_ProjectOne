@@ -30,7 +30,7 @@ One popular LLM guardrail framework has been provided by **Guardrails AI** that 
 
 ## Test Scenarios and Prompts (Data) Description
 
-> This project is organized under **three** scenarios, each addresses a prevalent domain of conversational AI risk and has three test prompts, totalling **9** test cases.
+> This project is organized under **three** scenarios, each addresses a prevalent domain of conversational AI risk and has 3 test prompts, totalling **9** test cases.
 
 ### <span style="color: #82c8e5;">Test Scenario 1 - Data (De)anonymization for enhanced privacy</span>
 
