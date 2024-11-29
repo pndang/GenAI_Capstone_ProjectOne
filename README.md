@@ -32,7 +32,7 @@ One popular LLM guardrail framework has been provided by Guardrails AI that focu
 
 This project is organized under **three** scenarios, each addresses a prevalent domain of conversational AI risk and has three test prompts, totalling 9 test cases.
 
-#### Test Scenario 1 - Data (De)anonymization for enhanced privacy
+#### <span style="color: #82c8e5;">Test Scenario 1 - Data (De)anonymization for enhanced privacy</span>
 
 <em>**Risks addressed**</em>: Sensitive information leakage, whether personal- or enterprise-level, which may harm user privacy, data/systems integrity, and brand image.
 
