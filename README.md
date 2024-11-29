@@ -18,7 +18,7 @@
 The term **AI** — particularly Generative AI — has increasingly becoming an integral part of individuals' lives and enterprises, with a strong focus on improvements, such as efficiency, automation, cost reduction, and companionship — however — seldom are the conversations about risk-mitigation and the potential harms of GenAI, which are key to building **trust** for the effective and ethical adoption of GenAI at both the indiviudal- and enterprise-level. The work of this survey project aims to implement a wide variety of LLM guardrail frameworks, balancing both breadth and depth, to document the pros and cons of each framework (qualitative) and benchmark the performance for each framework (quantitative) for analysis and comparison. Key measurements are implementation complexity, ease-of-use, robustness, fault tolerance, security, latency, and prompt-flag accuracy. [PLACE HOLDER FOR FUTURE RESULTS AND FINDINGS].
 
 ## Introduction
-### Background & Problem Statement
+### Background & Problem Description
 In "The great acceleration: CIO perspectives on generative AI" by the MIT Tech Review and Databricks, Schaefer—Chief Health Informatics Officer at Kansas City VA Medical Center—stated **"trust"** as the Key to effectively adopting generative AI. The healthcare industry is a great case study for involving a multitude of high-stake processes and parties, such as the use of machine learning models to predict protein structures, assist drug discovery, and track the progression of outbreaks, to chatbots helping front-line staff by transcribing medical notes and answering patients' questions. The same understanding of such broad applications can be applied to other industries, where enterprises are less efficient with scattered data sources — this struggle presents an immense opportunity for generative AI to unify such scattered information into productive uses through large language models. Realizing this opportunity requires its effective and ethical implementation to protect data and network integrity, safety, and privacy across systems for the collective benefits of those affected most by generative AI.
 
 ### Literature Review
@@ -28,7 +28,7 @@ One popular LLM guardrail framework has been provided by **Guardrails AI** that 
 
 [PLACEHOLDER FOR DISCUSSION OF NEMO GUARDRAILS, OPENAI COOKBOOK GUARDRAILS, ETC.]
 
-## Test Scenarios and Prompts (Data) Descriptions
+## Test Scenarios and Prompts (Data) Description
 
 > This project is organized under **three** scenarios, each addresses a prevalent domain of conversational AI risk and has three test prompts, totalling **9** test cases.
 
