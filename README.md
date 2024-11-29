@@ -72,7 +72,7 @@ card #: 1234 5678 9101 1121\
 card name: Phu Dang\
 security code: 555
 
-please call me back at 669-274-8956 to confirm. Thanks
+please call me back at 669-274-8956 to confirm. Thanks"
 
 """
 
@@ -86,7 +86,7 @@ Công ty Triton Capital Partners (TCP), LLC, trân trọng bày tỏ mong muốn
 Đại diện từ TCP sẽ liên hệ về các điều khoản giao dịch chi tiết sau. Chúng tôi mong muốn có cơ hội hợp tác với Quý vị trong giao dịch này. 
 
 Trân trọng,\
-Triton Capital Partners, LLC
+Triton Capital Partners, LLC"
 
 """
 
