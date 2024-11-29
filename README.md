@@ -77,7 +77,7 @@ please call me back at 669-274-8956 to confirm. Thanks
 """
 
 3 - """
-Please translate the following patient record to English:
+Please translate the following letter of intent to English:
 
 "Kính gửi Jeff,
 
