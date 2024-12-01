@@ -1,2 +1,3 @@
 .env
 projectone_venv/*
+NeMo-Guardrails/my_assistant/nemo_venv/*
