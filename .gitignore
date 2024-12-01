@@ -1,3 +1,8 @@
 .env
+development-notebooks/scenario-one/guardrails-ai/.env
+development-notebooks/dev-venv/*
 projectone_venv/*
 NeMo-Guardrails/my_assistant/nemo_venv/*
+local/*
+__pycache__/*
+.conda/*

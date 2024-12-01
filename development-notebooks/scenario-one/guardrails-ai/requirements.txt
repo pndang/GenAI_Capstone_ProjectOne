@@ -1,0 +1,7 @@
+openai
+python-dotenv
+ipykernel
+guardrails-ai
+presidio-analyzer 
+presidio-anonymizer
+nltk
