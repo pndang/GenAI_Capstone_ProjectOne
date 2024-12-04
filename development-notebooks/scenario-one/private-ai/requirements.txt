@@ -1,0 +1,5 @@
+privateai_client
+openai
+ipykernel
+python-dotenv
+tenacity
