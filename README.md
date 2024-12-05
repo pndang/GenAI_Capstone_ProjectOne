@@ -132,6 +132,8 @@ One popular LLM guardrail framework has been provided by **Guardrails AI** that 
 
     """
 
+<em>Why this prompt</em> — prompt 1 of scenario 2 mimics a Yelp restaurant review containing the reviewer's hometown and some private details about their visit. Although the exact information may be useful in certain applications, some users may not want their data shared or unknowingly used to train AI models — it is here that replacing PIIs with synthetic versions can be a solution to practice data minimization and further democratize true data ownership. 
+
 &nbsp;
 
     2 - """
@@ -146,6 +148,8 @@ One popular LLM guardrail framework has been provided by **Guardrails AI** that 
     The owners are friendly, and will happily tell you which beers go well with what you're eating. If you're feeling adventurous, just pick those devilish looking ones. You won't be disappointed!"
 
     """
+
+<em>Why this prompt</em> — prompt 2 builds on top of prompt 1 by including subtle comment involving brand-naming (Carlsberg and Heineken) that could potentially leads to biased algorithms, such as a biased recommender system, if such comments are not treated properly in training, as well as potential legal branding concerns. This prompt helps to test guardrails' ability to alter such narratives with synthetic entities, making it safer to store and use them for future product development purposes, such as training a recommender system or fine-tuning a translation model.
 
 &nbsp;
 
@@ -164,6 +168,7 @@ One popular LLM guardrail framework has been provided by **Guardrails AI** that 
 
     """
 
+<em>Why this prompt</em> — prompt 3 of scenario 2 is ideal for testing the likelihood of hallucinations when generating a synthetic version given its complexity involving travel time and 5 travel destinations. Of course, we would not want a synthetic prompt to allocate 2 hours to travel between the U.S. and Singapore. In certain business applications, such travel itinerary information can be important private information that must be protected to prevent bad actors from reverse-engineering business plans, leading to unfair competition and privacy breach.
 
 &nbsp;
 
@@ -216,7 +221,7 @@ One popular LLM guardrail framework has been provided by **Guardrails AI** that 
 **Definitions**:
 
 - The following terms (and more) are used interchangeably to mean the replacement of private information with placeholders: anonymization, de-identification, redaction/redacted/redact, mask.
-- The following terms (and more) are used interchangeable to mean placing the removed private information back into the tranlation response before it gets to the user: de-anonymization, re-identification, unmasking. 
+- The following terms (and more) are used interchangeably to mean placing the removed private information back into the translation response before it gets to the user: de-anonymization, re-identification, unmasking. 
 
 **Set Up**:
 
@@ -228,7 +233,7 @@ The 9 test cases are implemented aross 9 development Jupyter notebooks within th
 
 > The development workflow is set up as such to prevent conflicting dependencies among guardrail providers — for ex: Protect AI and Guardrails AI use several same packages, however, in different versions, making it very difficult and time-consuming to run both frameworks in the same environment, if possible.
 
-<em>Test Structure</em> — each notebook is structured roughly the same way, testing each prompt in order from 1-3. Notably, the code structure going from prompt 1-3 will increasingly gets more organized and efficient. For example, prompt 1 was tested across multiple cells and function calls, which reflect the research and initial implementation; then, the very same code is organized in a pipeline to test prompt 2 and 3 with fewer lines of code — the most efficient implementation in each of the 9 test cases are the candidates for incorporation into the final product (see below). 
+<em>Test Notebook Structure</em> — each notebook is structured roughly the same way, testing each prompt in order from 1-3. Notably, the code structure going from prompt 1-3 will increasingly gets more organized and efficient. For example, prompt 1 of scenario x was tested across multiple cells and function calls, which reflect the research and initial implementation; then, the very same code is organized in a pipeline to test prompts 2 and 3 with fewer lines of code — the most efficient implementation in each of the 9 test cases are the candidates for incorporation into the final product (see below). 
 
 > This is an API-intensive project — hence, users interested in replicating this project must have API keys and any other applicable credentials to employ the tools used. Simply place them in a ".env" file in the same directory as the test notebook following the naming convention used in the notebook, which will set up the configurations needed. Similarly, creating environment variables in a terminal is an alternative approach (will require minor configuration adjustments in the notebooks).
 
@@ -244,7 +249,9 @@ With the 9 test cases completed, the best framework from Scenarios 1 and 3 will 
 ### Results
 
 ### <span style="color: #82c8e5;">Test Scenario 1 - Data (De)anonymization for enhanced privacy</span>
-
+- (**Third**) &nbsp;<em>Guardrails AI + Azure AI Textanalytics</em> impressively performed seconds to Private AI in redacting PIIs, even so robust that it over-redacted the input prompts, which poses the risk of reducing the prompts' quality when there are too many anonymized placecholders, which also diminishes human readability. Unfortunately, the framework does not have a built-in functionailtiy to re-identify the redacted information, which makes it usable as users may not want to see placeholders in place of the information they provided in their translation inquiry. 
+    - Pros: 1) simple integration between Guardrails AI and Azure AI text models through the Guardrails AI Hub with a user-friendly wbe interface, 2) could be ideal for risk-adverse use cases where over-redaction might be favorable.
+    - Cons: 1) over-redaction that lowers prompt quality and 2) lacking a built-in functionality to re-identify prompts after anonymization — it is crucial that users get back the information they provided in translation inquiries. 
 - (**Runner Up**) &nbsp;<em>Protect AI's LLM Guard</em> does well for simple prompts with very simple PIIs and fail at those with complex PIIs, such as all three prompts tested. The framework did not get any of the three prompts perfect and even missed certain common PIIs, such as the property address in prompt 3 and credit card number in prompt 2. 
     - Pros: 1) robust automated re-identification functionality through Vault (redacted entities storage mechanism for re-identification), 2) relatively simple to add custome regex patterns for specific guarding needs (although pros #1 is lost with PIIs redacted through custom patterns as the removed entities are not tracked).
     - Cons: failure to detect basic PIIs without incorporating more complex add-ons (e.g. Microsoft Presidio) — or, Presidio is already implemented under-the-hood and not widely  advertised, which could lead to confusion for users.
@@ -252,7 +259,7 @@ With the 9 test cases completed, the best framework from Scenarios 1 and 3 will 
     - Pros: 1) supporting online documentation and code examples are clear, thoughtfully made, and express the value of guardrails well, 2) across the three test prompts, the framework achieved perfect redaction and re-identification results with much less code compared to Protact AI and Azure AI, 3) strong emphasis on object-oriented programming allows for abstract and scalable code.
     - Cons: 1) Despite being straightforward to implement, a couple of examples had value type bugs and API connction issues.
 
-- <em>Best example by Private AI</em>:
+- <em>Best example by Private AI </em> — PII entities are never exposed to the LLM API:
     - Starting prompt: 
     
             """Please translate the following to Vietnamese: 
@@ -300,7 +307,36 @@ With the 9 test cases completed, the best framework from Scenarios 1 and 3 will 
 
 - <em>Latency</em>:
     
+### <span style="color: #e6a683;">Test Scenario 2 - Data Minimization with context-and-utility preserving anonymization</span>
 
+- (**Runner Up**) &nbsp;<em>Private AI's Synthetic PII generation engine</em> performed fairly by adding good synthetic entities for some PIIs; however, it showed a high likelihood to hallucinate by planning a 2 hours trip from New York City to Pubjab, India (prompt 3) and missed the most important purpose of prompt 2 regarding the brand-naming of Carlsberg and Heineken. 
+    - Pros: 1) straightforward implementation following Private AI's instructions, and 2) may be applicable in simple use cases involving synthetic PII generation, perhaps as a secondary add-on to another primary guardrail. 
+    - Cons: 1) Nearly impossible to modify the synthetic PII generation mechanism as the framework is largely comprised of object-oriented function calls to the Private AI API, and 2) a strong propensity to hallucinate with illogical synthetic prompts.
+- (**Best**) &nbsp;<em>LLM Judge from OpenAI Cookbook</em> offers a great balance of effectiveness and modifiability. As the name implies, this framework involves a direct LLM call to generate synthetic versions of prompts, which allowed great flexibility in providing bespoke instructions tailored to each use case, such as explicitly replacing real brand entities with <em>made up</em> brands, resulting in a neutral prompt. 
+    - Pros: 1) Successfully replaced PIIs with synthetic (made up) entities that mitigate brand risks, and 2) great flexbility to control how the LLM treats and generates synthetic entities.
+    - Cons: Given the framework's nature as LLM judges, the repeated LLM calls suffer from "memorized" details, perhaps through a persistent chat-log system for back-and-forth conversations, that make the model hallucinates by going off track from the subject prompt. For example, asking for a synthetic version of a prompt in English returns a synthetic version in Vietnamese — perhaps the model "memorized" its role as a translation tool.
+
+- <em>Best example by LLM Judge guardrails — good synthetic entities generation while ensuring the made up contents make sense and retain the original intent of prompts</em>:
+    - starting prompt: 
+
+            """Son Hang-seo
+            Gyeongsang Nam, South Korea
+
+            This is like a beer heaven that no one knows about! If you're tired of all those common commercial beer such as Carlsberg or Heineken and want to look for some rare beers, you should definitely head down to The Beers and Bastards.
+
+            The owners are friendly, and will happily tell you which beers go well with what you're eating. If you're feeling adventurous, just pick those devilish looking ones. You won't be disappointed!
+
+            """
+    - synthetic version:
+
+            """Son Jeong-ho
+            Jeolla Nam, South Korea
+
+            This is like a beer paradise that remains undiscovered! If you're weary of all those mainstream commercial beers such as Alpine or Starlight and are hunting for some uncommon brews, you should certainly venture to The Ales and Outlaws.
+
+            The proprietors are amiable, and will gladly inform you which beers perfectly complement your meal. If you're feeling bold, just choose those wicked looking ones. You won't be let down!
+            
+            """
 
 ### Discussion
 

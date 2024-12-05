@@ -236,40 +236,48 @@ if __name__ == "__main__":
 
 
 
-def azure_ai_textanalytics_pipeline(prompt):
+def private_ai_pipeline(prompt):
 
-    # get PII detection 
-    documents = [prompt]
-    res = text_analytics_client.recognize_pii_entities(documents)
+    # build local entities map 
+    completions = {}
 
-    docs = [doc for doc in res if not doc.is_error]
+    completions["raw_text"] = prompt
+    redaction_request_obj = request_objects.process_text_obj(text=[prompt])
+    redaction_response_obj = client.process_text(redaction_request_obj)
 
-    # redaction
-    for idx, doc in enumerate(docs):
-    print(f"Document text: {documents[idx]}")
-    print(f"Redacted document text: {doc.redacted_text}")
-    for entity in doc.entities:
-        print("...Entity '{}' with category '{}' got redacted".format(
-            entity.text, entity.category
-        ))
+    # store redactions
+    deidentified_text = redaction_response_obj.processed_text[0]
+    completions["redacted_text"] = deidentified_text
+    entity_list = redaction_response_obj.get_reidentify_entities()
 
-    # send redacted prompt to the LLM
-    redacted_prompt = docs[0].redacted_text
-    print('\n'+redacted_prompt+'\n')
-
+    # send redacted prompt to LLM 
+    GPT_MODEL = 'gpt-4'
     res = OpenAI().chat.completions.create(
         model=GPT_MODEL,
         messages=[
             {'role': 'system', 'content': 'You are a helpful English-Vietnamese translation assistant.'},
-            {'role': 'user', 'content': redacted_prompt}
-            ]
-        )
-    
+            {'role': 'user', 'content': deidentified_text}
+        ]
+    )
+
     res_text = res.choices[0].message.content
-    print(res_text) 
+    completions['redacted'] = res_text
+    print(res_text+'\n')
+
+    # re-identify the anonymous LLM response
+
+    reidentification_request_obj = request_objects.reidentify_text_obj(
+        processed_text=[completions["redacted"]], entities=entity_list)
+
+    reidentification_response_obj = client.reidentify_text(
+        reidentification_request_obj)
+
+    completions["reidentified"] = reidentification_response_obj.body[0]
+
+    print(completions['reidentified'])
 
     return {
-        "redacted prompt": redacted_prompt, 
+        "redacted prompt": deidentified_text, 
         "llm output": res_text, 
-        "re-identified": None
+        "re-identified": completions['reidentified']
     }
