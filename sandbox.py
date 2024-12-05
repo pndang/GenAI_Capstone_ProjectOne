@@ -233,3 +233,43 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+def azure_ai_textanalytics_pipeline(prompt):
+
+    # get PII detection 
+    documents = [prompt]
+    res = text_analytics_client.recognize_pii_entities(documents)
+
+    docs = [doc for doc in res if not doc.is_error]
+
+    # redaction
+    for idx, doc in enumerate(docs):
+    print(f"Document text: {documents[idx]}")
+    print(f"Redacted document text: {doc.redacted_text}")
+    for entity in doc.entities:
+        print("...Entity '{}' with category '{}' got redacted".format(
+            entity.text, entity.category
+        ))
+
+    # send redacted prompt to the LLM
+    redacted_prompt = docs[0].redacted_text
+    print('\n'+redacted_prompt+'\n')
+
+    res = OpenAI().chat.completions.create(
+        model=GPT_MODEL,
+        messages=[
+            {'role': 'system', 'content': 'You are a helpful English-Vietnamese translation assistant.'},
+            {'role': 'user', 'content': redacted_prompt}
+            ]
+        )
+    
+    res_text = res.choices[0].message.content
+    print(res_text) 
+
+    return {
+        "redacted prompt": redacted_prompt, 
+        "llm output": res_text, 
+        "re-identified": None
+    }

@@ -6,3 +6,7 @@ NeMo-Guardrails/my_assistant/nemo_venv/*
 local/*
 __pycache__/*
 .conda/*
+development-notebooks/scenario-one/private-ai/privateai-venv/*
+development-notebooks/scenario-one/private-ai/.env
+development-notebooks/scenario-two/llm_judge_openai-cookbook/llm-judge-venv/*
+development-notebooks/scenario-two/private-ai/.env
