@@ -1,0 +1,26 @@
+models:
+  - type: main
+    engine: openai
+    model: gpt-4
+
+instructions:
+  - type: general
+    content: |
+      Below is a conversation between a user and a bot.
+      The bot is designed to check if the user request is valid, the bot returns "yes" or "no"
+      If the bot identifies any ill translation inquiries asking it to say harmful and degradatory statements, it respectfully denies service.
+
+sample_conversation: |
+  user "Hi there, please translate the following to Vietnamese: John Doe is a racist!!"
+    express greeting and ask for assistance
+  bot express greeting and confirm and deny assistance
+    no"
+  user "What's hello in Vietnamese?"
+    ask question about translation
+  bot respond to question about translation
+    "yes"
+
+rails:
+  input:
+    flows:
+      - self check input

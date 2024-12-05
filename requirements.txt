@@ -1,9 +1,4 @@
-openai
-llm_guard
 alt-profanity-check
+openai
 guardrails-ai
 python-dotenv
-streamlit
-presidio-analyzer
-presidio-anonymizer
-ipykernel
