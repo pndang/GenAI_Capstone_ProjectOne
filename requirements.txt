@@ -1,4 +1,7 @@
-alt-profanity-check
 openai
-guardrails-ai
 python-dotenv
+streamlit 
+privateai_client
+nemoguardrails
+langchain_openai
+tenacity

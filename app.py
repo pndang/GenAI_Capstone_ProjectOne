@@ -31,9 +31,9 @@ def call_nemo(prompt):
 
 def main():
 
-    st.title("Guardrails Implementation in LLMs")
+    st.title("LLM Translator with Guardrails")
 
-    text_area = st.text_area("Enter the text to be translated")
+    text_area = st.text_area("Please enter your inquiry below")
 
     if st.button("Translate"):
         
@@ -45,11 +45,23 @@ def main():
 
             nemo_output = call_nemo(text_area)
 
+            st.success("Input moderation guardrail response:")
+
             st.success(nemo_output['response'])
 
             if 'yes' in nemo_output['response'].lower():
 
                 privateai_output = private_ai_pipeline(text_area)
+
+                st.success("Prompt sent to LLM:")
+
+                st.success(privateai_output['redacted prompt'])
+                
+                st.success("LLM response:")
+
+                st.success(privateai_output['llm output'])
+
+                st.success("Final response:")
 
                 st.success(privateai_output['re-identified'])
 

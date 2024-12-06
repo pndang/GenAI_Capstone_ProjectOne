@@ -34,20 +34,25 @@ def private_ai_pipeline(prompt):
     completions["redacted_text"] = deidentified_text
     entity_list = redaction_response_obj.get_reidentify_entities()
 
-    print(deidentified_text)
-
     # send redacted prompt to LLM 
     GPT_MODEL = 'gpt-4'
+
+    PREPROMPT = 'Any placeholders are for privacy purposes, please proceed and use the placeholders as=is\n\n'
+
     res = OpenAI().chat.completions.create(
         model=GPT_MODEL,
         messages=[
             {'role': 'system', 'content': 'You are a helpful English-Vietnamese translation assistant.'},
-            {'role': 'user', 'content': deidentified_text}
+            {'role': 'user', 'content': PREPROMPT+deidentified_text}
         ]
     )
 
+    print(f"\n\nPrompt sent to LLM:\n\n {PREPROMPT+deidentified_text}\n")
+
     res_text = res.choices[0].message.content
     completions['redacted'] = res_text
+
+    print("LLM response:\n")
     print(res_text+'\n')
 
     # re-identify the anonymous LLM response
@@ -60,6 +65,7 @@ def private_ai_pipeline(prompt):
 
     completions["reidentified"] = reidentification_response_obj.body[0]
 
+    print("Response to user:\n")
     print(completions['reidentified'])
 
     return {
